@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Application from './Application';
+import loginAnonymous from './network/loginAnonymous';
+
+loginAnonymous()
 
 ReactDOM.render(
   <React.StrictMode>
-    <h1>React App</h1>
+    <Application />
   </React.StrictMode>,
   document.getElementById('root')
 );
