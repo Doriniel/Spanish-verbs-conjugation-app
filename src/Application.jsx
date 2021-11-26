@@ -8,7 +8,7 @@ export default function Application () {
         const store = createVerbsStore(await loginAnonymous())
         const d = await store.find({infinitive: 'tener'})
         console.log(JSON.stringify(d, null, '\t'))
-        setVerb(d[0].infinitive_english)
+        setVerb(d[0].infinitive)
     }, [])
-    return <h1>{verb}</h1>
+    return <h1>Espanol infinitive: {verb}</h1>
 }
