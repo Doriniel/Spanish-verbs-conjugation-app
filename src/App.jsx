@@ -2,32 +2,55 @@ import {useEffect, useState} from 'react';
 import createVerbsStore from './hooks/useVerbsStore';
 import loginAnonymous from './network/loginAnonymous';
 import ConjugationOutput  from './ConjugationOutput';
+import {Counter as Test} from './Test/Test';
+import RootRouter from './routes/RootRouter';
 
 export default function App () {
     const [verb, setVerb] = useState(undefined)
     const [conjuged, setConjuged] = useState([]);
 
+    const [isDestroyCounter, setIsDestroyCounter] = useState(false);
+
+    useEffect( () => {
+       const timer =  setTimeout(()=> setIsDestroyCounter(true), 5000);
+       return () => clearTimeout(timer);
+    }, [])
+
+
     useEffect(() => {
         async function fetchData() {
             const store = createVerbsStore(await loginAnonymous())
-            const data = await store.find({infinitive: 'tener'})
+            const data = await store.find({$or: [
+                {infinitive: 'tener'},
+            ], $and: [{form_3s: {$exists: true}}],
+            $and: [{mood: 'Indicativo'}]
+        })
+
             console.log(JSON.stringify(data, null, '\t'));
-            console.log(JSON.stringify(data[0], null, '\t'))
+            // console.log(JSON.stringify(data[0], null, '\t'))
             setVerb(data[0].infinitive)
 
 
             const arrayInf = data.map((item)=> item.infinitive);
             const arrayConjuged = data.map((item) => item.form_1s)
-            console.log(arrayConjuged);
+            // console.log(arrayConjuged);
             setVerb(arrayInf[0]);
             setConjuged(arrayConjuged);
-        } fetchData();
+        }; 
+        fetchData();
     }, [])
+
     
     return (
     <div>
+        {/* {isDestroyCounter ? null : <Test />} */}
         <h1>Espanol infinitive: {verb}</h1>
-        <ConjugationOutput verbConjuged={conjuged} />
+        {/* {<ConjugationOutput verbConjuged={conjuged} /> */}
+        <header>HEADER</header>
+        <main>
+            <RootRouter />
+        </main>
+        <footer>FOOTER</footer>
     </div>);
 }
 
