@@ -1,0 +1,12 @@
+
+.header {
+    background-color: aquamarine;
+    width: 100%;
+    height: 70px;
+}
+
+.title {
+    background-color: bisque;
+    font-size: 20px;
+    font-family: 'Caveat', 'Montserrat', cursive;
+}

@@ -4,6 +4,7 @@ import loginAnonymous from './network/loginAnonymous';
 import ConjugationOutput  from './ConjugationOutput';
 import {Counter as Test} from './Test/Test';
 import RootRouter from './routes/RootRouter';
+import Header from './components/header/Header';
 
 export default function App () {
     const [verb, setVerb] = useState(undefined)
@@ -44,9 +45,9 @@ export default function App () {
     return (
     <div>
         {/* {isDestroyCounter ? null : <Test />} */}
-        <h1>Espanol infinitive: {verb}</h1>
         {/* {<ConjugationOutput verbConjuged={conjuged} /> */}
-        <header>HEADER</header>
+        <Header />
+        {/* <h3>Espanol infinitive: {verb}</h3> */}
         <main>
             <RootRouter />
         </main>
