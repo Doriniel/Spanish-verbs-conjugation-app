@@ -1,0 +1,14 @@
+
+
+.buttonConjug {
+    color: white;
+    width: 70%;
+    font-weight: 500;
+    font-size: 22px;
+    background-color: #546de5;
+    padding: 5px 15px;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    border: none;
+ }

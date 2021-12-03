@@ -1,0 +1,21 @@
+
+.container {
+    padding: 20px;
+    border: 3px solid #546de5;
+}
+
+
+.parameter {
+    font-size: 24px;
+    font-weight: 700;
+    color: #546de5;
+    /* margin: 20px; */
+    padding: 10px;
+    text-align: center;
+    /* background-color: #778beb transparent; */
+    
+}
+
+.h2{
+    color: #303952;
+}

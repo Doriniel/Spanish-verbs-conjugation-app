@@ -1,13 +1,15 @@
-import Checkbox from "../ui/inputs/checkbox/Checkbox";
-import Radio from "../ui/inputs/radio/Radio";
+import Button from "../../ui/inputs/button/Button";
+import Checkbox from "../../ui/inputs/checkbox/Checkbox";
+import Radio from "../../ui/inputs/radio/Radio";
+import S from "./Settings.module.css";
 
 export default function Settings() {
     return (
-        <div>
-            <h2>Выберите параметры для спряжения глаголов</h2>
+        <div className={S.container}>
+            <h2 className={S.h2}>Выберите параметры для спряжения глаголов</h2>
             <form>
                 {/* при наведении на Наклонение показывать перевод на Испанский - Modo */}
-                <p> Наклонение </p>
+                <p className={S.parameter}> Наклонение </p>
                 <div>
                     <Radio value="Indicativo" name="modo"/>
                 </div>
@@ -24,7 +26,7 @@ export default function Settings() {
                     <Radio name="modo" value="Condicional" id="condicional" label="Condicional" />
                 </div>
 
-                <p> Время </p>
+                <p className={S.parameter}> Время </p>
                     <div>
                         <Checkbox type="checkbox" name="Presente" label="Presente" id="presente" />
                     </div>
@@ -85,6 +87,19 @@ export default function Settings() {
                     <div>
                         <Checkbox type="checkbox" name="PresenteNegativo" label="Presente Negativo" id="presenteNegativo" />
                     </div>
+
+                    <p className={S.parameter}> Тип глагола </p>
+                    <div>
+                        <Checkbox type="checkbox" name="Regular" label="Regular" id="regular" />
+                    </div>
+                    <div>
+                        <Checkbox type="checkbox" name="Irregular" label="Irregular" id="irregular" />
+                    </div>
+                    <div>
+                        <Checkbox type="checkbox" name="Todos" label="Todos" id="todos" />
+                    </div>
+                    
+                    <Button>Спрягать</Button>
             </form>
         </div>
     )

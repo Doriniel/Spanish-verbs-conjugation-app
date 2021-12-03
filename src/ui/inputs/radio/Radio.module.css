@@ -1,1 +1,10 @@
 
+.containerModo{
+    padding: 5px;
+}
+
+.radioModo {
+    color: #303952;
+    padding: 0px 10px;
+    font-weight: 500;
+}

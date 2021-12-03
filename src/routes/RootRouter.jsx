@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router";
-import Settings from "../pages/Settings";
+import Settings from "../pages/settings/Settings";
 import Main from "../pages/Main";
 import Answer from "../pages/Answer";
-import Conjugation from "../pages/Conjugation";
+import Conjugation from "../pages/conjugation/Conjugation";
 
 // RootRouter - корневой роутер
 export default function RootRouter() {

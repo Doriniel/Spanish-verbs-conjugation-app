@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import createVerbsStore from './hooks/useVerbsStore';
 import loginAnonymous from './network/loginAnonymous';
-import ConjugationOutput  from './ConjugationOutput';
+// import ConjugationOutput  from './ConjugationOutput';
 import {Counter as Test} from './Test/Test';
 import RootRouter from './routes/RootRouter';
 import Header from './components/header/Header';
@@ -45,9 +45,9 @@ export default function App () {
     return (
     <div>
         {/* {isDestroyCounter ? null : <Test />} */}
-        {/* {<ConjugationOutput verbConjuged={conjuged} /> */}
+        {/* <ConjugationOutput verbConjuged={conjuged} /> */}
         <Header />
-        {/* <h3>Espanol infinitive: {verb}</h3> */}
+        <h3>Espanol infinitive: {verb}</h3>
         <main>
             <RootRouter />
         </main>
