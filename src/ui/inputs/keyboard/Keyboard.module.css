@@ -1,0 +1,26 @@
+
+
+.keyboard{
+    padding: 10px;
+    margin: 20px 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.symbol{
+    margin: 0 10px;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: 600;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-color: white;
+    /* background-color: linear-gradient(180deg, #F4F4F4 0%, rgba(255, 255, 255, 0) 29.17%, rgba(255, 255, 255, 0) 71.87%, #DEDEDE 100%), #FFFFFF; */
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 0px #000000;
+    border-radius: 2px;
+    transform: rotate(-4deg);
+}

@@ -21,11 +21,8 @@ export default function App () {
     useEffect(() => {
         async function fetchData() {
             const store = createVerbsStore(await loginAnonymous())
-            const data = await store.find({$or: [
-                {infinitive: 'tener'},
-            ], $and: [{form_3s: {$exists: true}}],
-            $and: [{mood: 'Indicativo'}]
-        })
+            const data = await store.find({infinitive: 'tener'})
+        
 
             console.log(JSON.stringify(data, null, '\t'));
             // console.log(JSON.stringify(data[0], null, '\t'))
@@ -47,7 +44,7 @@ export default function App () {
         {/* {isDestroyCounter ? null : <Test />} */}
         {/* <ConjugationOutput verbConjuged={conjuged} /> */}
         <Header />
-        <h3>Espanol infinitive: {verb}</h3>
+        {/* <h3>Espanol infinitive: {verb}</h3> */}
         <main>
             <RootRouter />
         </main>

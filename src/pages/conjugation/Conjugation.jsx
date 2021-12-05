@@ -1,46 +1,44 @@
 import S from './Conjugation.module.css';
+import Keyboard from '../../ui/inputs/keyboard/Keyboard';
+import Button from '../../ui/inputs/button/Button';
 
 export default function Conjugation() {
     return (
         <div className={S.container}>
             <h2 className={S.h2}>Введите правильную форму глагола ниже</h2>
-            <div className={S.conjugParams}>
-                <p>Кто/ Persona</p>
-                <p >___Yo____</p>
+            <div className={S.containerInner}>
+                <div className={S.conjugParams}>
+                    <p>Кто/ Persona</p>
+                    <p >___Yo____</p>
+                </div>
+                <div className={S.conjugParams}>
+                    <p>Глагол/ Verbo</p>
+                    <p>____dormir___</p>
+                </div>
+                <div className={S.conjugParams}>
+                    <p>Наклонение/ Modo</p>
+                    <p>_______</p>
+                </div>
+                <div className={S.conjugParams}>
+                    <p>Время/ Tiempo</p>
+                    <p>_______</p>
+                </div>
+                <div className={S.conjugParams}>
+                    <p>Тип глагола Regular/ Irregular</p>
+                    <p>_______</p>
+                </div>
+                <div className={S.conjugParams}>
+                    <p>Перевод/ Traducción</p>
+                    <p>_______</p>
+                </div>
             </div>
-            <div className={S.conjugParams}>
-                <p>Глагол/ Verbo</p>
-                <p>____dormir___</p>
-            </div>
-            <div className={S.conjugParams}>
-                <p>Наклонение/ Modo</p>
-                <p>_______</p>
-            </div>
-            <div className={S.conjugParams}>
-                <p>Время/ Tiempo</p>
-                <p>_______</p>
-            </div>
-            <div className={S.conjugParams}>
-                <p>Тип глагола Regular/ Irregular</p>
-                <p>_______</p>
-            </div>
-            <div className={S.conjugParams}>
-                <p>Перевод/ Traducción</p>
-                <p>_______</p>
-            </div>
-            <div className={S.answer}>
-                <label> Спряжение
-                    <input type="text" />
-                </label>
-            </div>
-            <div className={S.keyboard}>
-                <button type="button" value="é" className={S.symbol}>é</button>
-                <button type="button" value="í" className={S.symbol}>í</button>
-                <button type="button" value="á" className={S.symbol}>á</button>
-                <button type="button" value="ó" className={S.symbol}>ó</button>
-                <button type="button" value="ú" className={S.symbol}>ú</button>
-                <button type="button" value="ñ" className={S.symbol}>ñ</button>
-            </div>
+                <div className={S.answer}>
+                    <label> Спряжение
+                        <input type="text" />
+                    </label>
+                </div>
+            <Keyboard />
+            <Button>Проверить </Button>
         </div>
     )
 }
