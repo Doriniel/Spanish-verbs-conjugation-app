@@ -1,0 +1,31 @@
+
+
+.conjugParams {
+    /* color: #303952;
+    font-weight: 500; */
+    /* /* padding: 5px 20px;  */
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.parameterKey{
+    /* margin: 0 10px; */
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    background-color: white;
+    border: 2px solid #494949;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 0px #494949;
+    border-radius: 4px;
+    padding: 5px 5px;
+}
+
+.parameterValue {
+    border: 1px solid #494949;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 0px #494949;
+    min-width: 30px;
+}

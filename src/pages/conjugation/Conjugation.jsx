@@ -1,36 +1,24 @@
 import S from './Conjugation.module.css';
 import Keyboard from '../../ui/inputs/keyboard/Keyboard';
 import Button from '../../ui/inputs/button/Button';
+import Parameter from '../../components/parameter/Parameter';
+
 
 export default function Conjugation() {
     return (
         <div className={S.container}>
             <h2 className={S.h2}>Введите правильную форму глагола ниже</h2>
             <div className={S.containerInner}>
-                <div className={S.conjugParams}>
-                    <p>Кто/ Persona</p>
-                    <p >___Yo____</p>
-                </div>
-                <div className={S.conjugParams}>
-                    <p>Глагол/ Verbo</p>
-                    <p>____dormir___</p>
-                </div>
-                <div className={S.conjugParams}>
-                    <p>Наклонение/ Modo</p>
-                    <p>_______</p>
-                </div>
-                <div className={S.conjugParams}>
-                    <p>Время/ Tiempo</p>
-                    <p>_______</p>
-                </div>
-                <div className={S.conjugParams}>
-                    <p>Тип глагола Regular/ Irregular</p>
-                    <p>_______</p>
-                </div>
-                <div className={S.conjugParams}>
-                    <p>Перевод/ Traducción</p>
-                    <p>_______</p>
-                </div>
+
+                <Parameter paramKey={'Наклонение/ Modo'}/>
+                <Parameter paramKey={'Время/ Tiempo'}/>
+                <Parameter paramKey={'Regular/ Irregular'}/>
+
+                <Parameter paramKey={'Кто/ Persona'}/>
+
+                <Parameter paramKey={'Глагол/ Verbo'}/>
+                <Parameter paramKey={'Перевод/ Traducción'}/>
+
             </div>
                 <div className={S.answer}>
                     <label> Спряжение

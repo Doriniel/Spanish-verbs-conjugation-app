@@ -22,5 +22,18 @@
     box-sizing: border-box;
     box-shadow: 2px 2px 0px #000000;
     border-radius: 2px;
+    /* transform: rotate(-4deg); */
+}
+
+.rotate_4 {
     transform: rotate(-4deg);
+}
+
+.rotate_10 {
+    transform: rotate(10deg);
+}
+
+.symbol:hover {
+    background-color: rgb(219, 219, 219);
+    box-shadow: 3px 3px 0px #000000;
 }

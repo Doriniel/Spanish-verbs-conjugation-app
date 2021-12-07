@@ -10,26 +10,17 @@
 }
 
 .containerInner{
-    background-color: #C7B9FF;
-    padding: 10px 10px;
     margin: 20px;
-    border: 2px solid #222224;
-    border-radius: 15px 15px 15px 15px;
-}
+    /* background-color: #C7B9FF; */
+    /* padding: 10px 10px;
+    /* border: 2px solid #222224;
+    border-radius: 15px 15px 15px 15px; */
+} 
 
 .h2{
     color: #303952;
 }
 
-.conjugParams {
-    /* background-color: turquoise; */
-    /* background-color: #f8a5c2; */
-    color: #303952;
-    font-weight: 500;
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 20px;
-}
 
 .answer {
     padding: 10px 10px;
