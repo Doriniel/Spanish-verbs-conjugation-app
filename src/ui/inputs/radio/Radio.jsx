@@ -8,7 +8,7 @@ export default function Radio(props) {
 
     return (
         <div className={S.containerModo}>
-            <input name={name} type="radio" value={value} id={id} checked={checked}/>
+            <input name={name} type="radio" value={value} id={id} checked={checked} onChange={onChange}/>
             <label htmlFor={id} className={S.radioModo}>{label}</label>
         </div>
     )

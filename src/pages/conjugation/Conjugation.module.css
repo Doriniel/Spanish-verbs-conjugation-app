@@ -9,25 +9,23 @@
     box-shadow: 2px 2px 0px 0px #000000;
 }
 
-.containerInner{
-    margin: 20px;
-    /* background-color: #C7B9FF; */
-    /* padding: 10px 10px;
-    /* border: 2px solid #222224;
-    border-radius: 15px 15px 15px 15px; */
-} 
-
 .h2{
     color: #303952;
+    font-weight: 700;
 }
 
 
-.answer {
-    padding: 10px 10px;
-    font-size: 22px;
-    font-weight: 600;
-    color: #303952;
+.table{
+    box-sizing: border-box;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+} 
+
+.tableRow {
+    display: flex;
+    justify-content: space-between;
+    
 }
 

@@ -13,6 +13,7 @@
     box-shadow: 2px 2px 0px 0px #000000;
 }
 
+
 .icon {
     display: block;
     margin: -1px auto;
@@ -42,6 +43,7 @@
     border: 4px dotted #699BF7;
     border-radius: 6px;
     padding: 10px;
+    min-height: 300px;
 }
 
 .type {

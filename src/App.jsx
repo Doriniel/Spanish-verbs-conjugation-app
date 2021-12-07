@@ -24,7 +24,7 @@ export default function App () {
             const data = await store.find({infinitive: 'tener'})
         
 
-            console.log(JSON.stringify(data, null, '\t'));
+            // console.log(JSON.stringify(data, null, '\t'));
             // console.log(JSON.stringify(data[0], null, '\t'))
             setVerb(data[0].infinitive)
 

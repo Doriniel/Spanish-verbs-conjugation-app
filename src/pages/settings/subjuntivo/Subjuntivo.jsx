@@ -4,22 +4,22 @@ export default function Subjuntivo() {
     return (
         <>
             <div>
-                <Checkbox type="checkbox" name="Presente" label="Presente" id="presente" />
+                <Checkbox type="checkbox" name="tiempo" label="Presente" value="Presente" id="presente" />
             </div>
             <div>
-                <Checkbox type="checkbox" name="Imperfecto" label="Imperfecto" id="imperfecto" />
+                <Checkbox type="checkbox" name="tiempo" label="Imperfecto" value="Imperfecto" id="imperfecto" />
             </div>
             <div>
-                <Checkbox type="checkbox" name="Futuro" label="Futuro" id="futuro" />
+                <Checkbox type="checkbox" name="tiempo" label="Futuro" value="Futuro" id="futuro" />
             </div>
             <div>
-                <Checkbox type="checkbox" name="PreteritoPerfecto" label="Pretérito perfecto" id="preteritoPerfecto" />
+                <Checkbox type="checkbox" name="tiempo" label="Pretérito perfecto" value="Pretérito perfecto" id="preteritoPerfecto" />
             </div>
             <div>
-                <Checkbox type="checkbox" name="Pluscuamperfecto" label="Pluscuamperfecto" id="pluscuamperfecto" />
+                <Checkbox type="checkbox" name="tiempo" label="Pluscuamperfecto"  value="Pluscuamperfecto" id="pluscuamperfecto" />
             </div>
             <div>
-                <Checkbox type="checkbox" name="FuturoPerfecto" label="Futuro perfecto" id="futuroPerfecto" />
+                <Checkbox type="checkbox" name="tiempo" label="Futuro perfecto" value="Futuro perfecto" id="futuroPerfecto" />
             </div>
         </>
     )

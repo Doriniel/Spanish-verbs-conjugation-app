@@ -4,23 +4,33 @@ import Radio from "../../ui/inputs/radio/Radio";
 import IconChart from "../../ui/icons/Icon";
 import S from "./Settings.module.css";
 import Indicativo from "./indicativo/Indicativo";
-import Conditional from "./conditional/Conditional";
+import Condicional from "./condicional/Condicional";
 import Imperativo from "./imperativo/Imperativo";
 import Subjuntivo from "./subjuntivo/Subjuntivo";
 import { useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { chooseSettings } from "../../redux/actions";
+import { useNavigate } from "react-router";
+import getRandomIntInclusive from '../../utils/getRandom'
 
 export default function Settings() {
-    const [indicativo, setIndicativo] = useState(true)
-    const [conditional, setConditional] = useState(false)
-    const [subjuntivo, setSubjuntivo] = useState(false)
-    const [imperativo, setImperativo] = useState(false)
+    const [modo, setModo] = useState('Indicativo');
+    const [tipoDeVerbo, setTipoDeVerbo] = useState('Regular');
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const onSubmit = (e) => {
         e.preventDefault()
         const data = new FormData(e.target)
-        const current = data.get('modo')
-    
+        const tiempos = data.getAll('tiempo')
+        dispatch(chooseSettings({
+            modo:  data.get('modo'),
+            tipo: data.get('type'),
+            tiempo: tiempos[getRandomIntInclusive(0, tiempos.length - 1)],
+        }))
+        navigate('/conjugation')
     }
+
     return (
         <div className={S.containerBig}>
             <div>
@@ -33,39 +43,38 @@ export default function Settings() {
                     <p className={S.parameter}> Наклонение </p>
                     <div className={S.modo} >
                         <div>
-                            <Radio value="Indicativo" name="modo" checked/>
+                            <Radio value="Indicativo" name="modo" id="indicativo" label="Indicativo" checked={modo === 'Indicativo'} onChange={(e) => setModo(e.target.value)}/>
                         </div>
                         <div>
-                            <Radio name="modo" value="Imperativo" id="imperativo" label="Imperativo" />
-                        </div>
-
-                        <div>
-                            <Radio name="modo" value="Subjuntivo" id="subjuntivo" label="Subjuntivo" />
+                            <Radio name="modo" value="Imperativo" id="imperativo" label="Imperativo" checked={modo === 'Imperativo'} onChange={(e) => setModo(e.target.value)}/>
                         </div>
 
                         <div>
-                            <Radio name="modo" value="Condicional" id="condicional" label="Condicional" />
+                            <Radio name="modo" value="Subjuntivo" id="subjuntivo" label="Subjuntivo" checked={modo === 'Subjuntivo'}  onChange={(e) => setModo(e.target.value)}/>
+                        </div>
+
+                        <div>
+                            <Radio name="modo" value="Condicional" id="condicional" label="Condicional" checked={modo === 'Condicional'} onChange={(e) => setModo(e.target.value)}/>
                         </div>
                     </div>
                     <p className={S.parameter}> Время </p>
                     <div className={S.tiempo}>
-                        {indicativo && <Indicativo />}
-                        {conditional && <Conditional />}
-                        {imperativo && <Imperativo />}
-                        {subjuntivo && <Subjuntivo />}
+                        {modo === 'Indicativo' && <Indicativo />}
+                        {modo === 'Condicional' && <Condicional />}
+                        {modo === 'Imperativo' && <Imperativo />}
+                        {modo === 'Subjuntivo' && <Subjuntivo />}
                     
                     </div>
-
                     <p className={S.parameter}> Тип глагола </p>
                     <div className={S.type}>
                         <div>
-                            <Radio name="type" value="Regular" id="regular" label="Regular" />
+                            <Radio name="type" value="Regular" id="regular" label="Regular" checked={tipoDeVerbo === 'Regular'} onChange={(e) => setTipoDeVerbo(e.target.value)}/>
                         </div>
                         <div>
-                            <Radio name="type" value="Irregular" id="irregular" label="Irregular" />
+                            <Radio name="type" value="Irregular" id="irregular" label="Irregular" onChange={(e) => setTipoDeVerbo(e.target.value)} />
                         </div>
                         <div>
-                            <Radio name="type" value="Todos" id="todos" label="Todos" />
+                            <Radio name="type" value="Todos" id="todos" label="Todos" onChange={(e) => setTipoDeVerbo(e.target.value)}/>
                         </div>
                     </div>
                     <Button>Спрягать</Button>
