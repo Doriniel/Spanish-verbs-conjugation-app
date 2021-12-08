@@ -13,55 +13,67 @@ import loginAnonymous from '../../network/loginAnonymous';
 import getRandomIntInclusive from '../../utils/getRandom';
 
 export default function Conjugation() {
-    const [infinitive, setInfinitive] = useState('')
-    const settings = useSelector(settingsSelector)
+    const [infinitive, setInfinitive] = useState('');
+    const [translate, setTranslate] = useState('');
+    const [keyboard, setKeyboard] = useState('');
+    const settings = useSelector(settingsSelector);
+
+    let[persona, setPersona]= useState('');
+    const persArr = ['yo', 'tú', 'el', "ella", "Usted", "nosotros", "vosotros", "ellos", "Ustedes"];
+
+
     useEffect(async () => {
         const store = createVerbsStore(await loginAnonymous())
         const data = await store.find({mood: modo, tense: tiempo, isRegular: tipo === 'Regular'})
-        setInfinitive(data.infinitive)
-        console.log(data, data[0, getRandomIntInclusive(0, data.length - 1)])
+        
+        let randomNumb = getRandomIntInclusive(0, 8);
+        let randomPersona = persArr[randomNumb];
+        setPersona(randomPersona);
+
+        let randomData = data[0, getRandomIntInclusive(0, data.length - 1)];
+        setInfinitive(randomData.infinitive);
+        setTranslate(randomData.verb_russian);
+        console.log(randomData);
+
     }, [])
+
     if (!settings) return <Navigate  to="/settings" replace={true}/>
     const {modo, tipo, tiempo} = settings
-    console.log(infinitive, 32321323)
 
     return (
         <div className={S.container}>
             <h2 className={S.h2}>Введите правильную форму глагола ниже</h2>
             <div>
-                <div>
-
-                </div>
                 <table className={S.table}>
                     <tbody>
                     <tr className={S.tableRow}>
                         <th>
                             <Parameter paramKey={'Modo'} style={{backgroundColor: '#18A0FB'}} paramValue={modo} />
                         </th>
-                        <th>
+                        <th className={S.tableCell}>
                             <Parameter paramKey={'Tiempo'} style={{backgroundColor: '#FF8577'}} paramValue={tiempo}/>
                         </th>
-                        <th>
+                        <th className={S.tableCell}>
                             <Parameter paramKey={'Tipo de verbo'} style={{backgroundColor: '#C7B9FF'}}  paramValue={tipo}/>
                         </th>
                     </tr>
                     <tr className={S.tableRow}>
                         <td>
-                            <Parameter paramKey={'Persona'} style={{backgroundColor: '#3DE959'}} />
+                            <Parameter paramKey={'Persona'} style={{backgroundColor: '#3DE959'}} paramValue={persona}/>
                         </td>
                         <td>
                             <Parameter paramKey={'Verbo Infinitivo'} style={{backgroundColor: '#3DE959'}} paramValue={infinitive}/>
                         </td>
-                        <td>
-                            <Parameter paramKey={'Traducción'} style={{backgroundColor: '#3DE959'}} />
+                        <td className={S.tableCell}>
+                            <Parameter paramKey={'Traducción'} style={{backgroundColor: '#3DE959'}} paramValue={translate}/>
                         </td>
                     </tr>
                     </tbody>
                 </table>
 
             </div>
-            <Answer />
-            <Keyboard />
+            <Answer keyboard={keyboard} />
+            <Keyboard onClick={(e) => setKeyboard(e.target.value)}/>
             <Button>Проверить </Button>
 
             <Result />
