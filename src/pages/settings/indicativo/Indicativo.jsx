@@ -7,10 +7,7 @@ export default function Indicativo() {
                 <Checkbox type="checkbox" name="tiempo" label="Presente" value='Presente' id="presente" />
             </div>
             <div>
-                <Checkbox type="checkbox" name="tiempo" label="Presente Progresivo" value='Presente progresivo' id="presenteProgresivo" />
-            </div>
-            <div>
-                <Checkbox type="checkbox" name="tiempo" label="Pretérito Perfecto" value="Pretérito perfecto" id="preteritoPerfecto" />
+                <Checkbox type="checkbox" name="tiempo" label="Presente perfecto" value="Presente perfecto" id="presentePerfecto" />
             </div>
             <div>
                 <Checkbox type="checkbox" name="tiempo" label="Pretérito" value="Pretérito" id="preterito" />
@@ -29,6 +26,12 @@ export default function Indicativo() {
             </div>
             <div>
                 <Checkbox type="checkbox" name="tiempo" label="Pretérito Anterior" value="Pretérito anterior" id="preteritoAnterior" />
+            </div>
+            <div>
+                <Checkbox type="checkbox" name="tiempo" label="Condicional" value="Condicional" id="condicionalMain" />
+            </div>
+            <div>
+                <Checkbox type="checkbox" name="tiempo" label="Condicional Perfecto" value="Condicional perfecto" id="condicionalPerfecto" />
             </div>
         </>
     )

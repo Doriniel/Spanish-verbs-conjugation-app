@@ -1,6 +1,6 @@
 
 .container {
-    min-width: min-content;
+    min-width: 320px;
     box-sizing: border-box;
     padding: 20px;
     margin-top: 20px;
@@ -41,3 +41,8 @@
     /* max-width: min-content; */
 }
 
+.answerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}

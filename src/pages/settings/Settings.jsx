@@ -1,7 +1,7 @@
 import Button from "../../ui/inputs/button/Button";
 import Checkbox from "../../ui/inputs/checkbox/Checkbox";
 import Radio from "../../ui/inputs/radio/Radio";
-import IconChart from "../../ui/icons/Icon";
+import {IconChart} from "../../ui/icons/Icon";
 import S from "./Settings.module.css";
 import Indicativo from "./indicativo/Indicativo";
 import Condicional from "./condicional/Condicional";
@@ -30,7 +30,7 @@ export default function Settings() {
         }))
         navigate('/conjugation')
     }
-
+    console.log(modo)
     return (
         <div className={S.containerBig}>
             <div>
@@ -45,24 +45,28 @@ export default function Settings() {
                         <div>
                             <Radio value="Indicativo" name="modo" id="indicativo" label="Indicativo" checked={modo === 'Indicativo'} onChange={(e) => setModo(e.target.value)}/>
                         </div>
-                        <div>
-                            <Radio name="modo" value="Imperativo" id="imperativo" label="Imperativo" checked={modo === 'Imperativo'} onChange={(e) => setModo(e.target.value)}/>
-                        </div>
-
+                        
                         <div>
                             <Radio name="modo" value="Subjuntivo" id="subjuntivo" label="Subjuntivo" checked={modo === 'Subjuntivo'}  onChange={(e) => setModo(e.target.value)}/>
                         </div>
-
                         <div>
-                            <Radio name="modo" value="Condicional" id="condicional" label="Condicional" checked={modo === 'Condicional'} onChange={(e) => setModo(e.target.value)}/>
+                            <Radio name="modo" value="Imperativo Afirmativo" id="imperativoAfirmativo" label="Imperativo Positivo" checked={modo === 'Imperativo Afirmativo'} onChange={(e) => setModo(e.target.value)}/>
                         </div>
+                        <div>
+                        <Radio name="modo" value="Imperativo Negativo" id="imperativoNegativo" label="Imperativo Negativo" checked={modo === 'Imperativo Negativo'} onChange={(e) => setModo(e.target.value)}/>
+                        </div>
+
+                        {/* <div>
+                            <Radio name="modo" value="Indicativo" id="condicional" label="Condicional" checked={modo === 'Condicional'} onChange={(e) => setModo(e.target.value)}/>
+                        </div> */}
                     </div>
                     <p className={S.parameter}> Время </p>
                     <div className={S.tiempo}>
                         {modo === 'Indicativo' && <Indicativo />}
-                        {modo === 'Condicional' && <Condicional />}
-                        {modo === 'Imperativo' && <Imperativo />}
                         {modo === 'Subjuntivo' && <Subjuntivo />}
+                        {/* {modo === 'Condicional' && <Condicional />} */}
+                        {modo === 'Imperativo Afirmativo' && <Imperativo />}
+                        {modo === 'Imperativo Negativo' && <Imperativo />}
                     
                     </div>
                     <p className={S.parameter}> Тип глагола </p>

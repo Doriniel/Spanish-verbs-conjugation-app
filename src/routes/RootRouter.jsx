@@ -14,7 +14,7 @@ export default function RootRouter() {
     return (
         <>
             <Routes>
-                <Route path={'/'} element={<Main/>} />
+                <Route path={'/'} element={<Settings/>} />
                 <Route path={'/settings'} element={<Settings />} />
                 <Route path={'/conjugation'} element={<Conjugation />} />
                 <Route path={'/answer'} element={<Answer />} />

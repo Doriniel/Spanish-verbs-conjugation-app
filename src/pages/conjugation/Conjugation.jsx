@@ -9,37 +9,63 @@ import Result from '../../components/results/Result';
 import { Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import createVerbsStore from '../../hooks/useVerbsStore';
-import loginAnonymous from '../../network/loginAnonymous';
 import getRandomIntInclusive from '../../utils/getRandom';
+import PersonasMap from '../../utils/personasMap';
+import Client from '../../network/loginAnonymous';
+import { IconDice } from '../../ui/icons/Icon';
 
 export default function Conjugation() {
-    const [infinitive, setInfinitive] = useState('');
-    const [translate, setTranslate] = useState('');
-    const [keyboard, setKeyboard] = useState('');
+    // const [infinitive, setInfinitive] = useState('');
+    // const [translate, setTranslate] = useState('');
+    const [answer, setAnswer] = useState('');
     const settings = useSelector(settingsSelector);
+    const [data, setData] = useState([])
+    const [index, setIndex] = useState(0)
+    const verb = data[index]
+
+    const infinitive = verb ? verb.infinitive : null
+    const translate = verb ? verb.verb_russian : null
+
+    const [isCorrect, setIsCorrect] = useState(null)
+    const {modo, tipo, tiempo} = settings ?? {}
 
     let[persona, setPersona]= useState('');
+
     const persArr = ['yo', 'tú', 'el', "ella", "Usted", "nosotros", "vosotros", "ellos", "Ustedes"];
 
+    const checkAnswer = () => answer.toLocaleLowerCase() === verb[PersonasMap.get(persona)].toLocaleLowerCase();
+
+    const clear = () => {
+        setIsCorrect(null);
+        setIndex(getRandomIntInclusive(0, data.length - 1));
+        setAnswer('');
+    }
+    
+    useEffect(() => {
+        if(!settings) return;
+        setPersona(persArr[getRandomIntInclusive(0, persArr.length - 1)])
+    },[verb])
 
     useEffect(async () => {
-        const store = createVerbsStore(await loginAnonymous())
-        const data = await store.find({mood: modo, tense: tiempo, isRegular: tipo === 'Regular'})
         
-        let randomNumb = getRandomIntInclusive(0, 8);
-        let randomPersona = persArr[randomNumb];
-        setPersona(randomPersona);
-
-        let randomData = data[0, getRandomIntInclusive(0, data.length - 1)];
-        setInfinitive(randomData.infinitive);
-        setTranslate(randomData.verb_russian);
-        console.log(randomData);
+        if(!settings) return;
+        const store = createVerbsStore(await Client)
+        const isRegular = tipo === 'Todos' ? {} : {isRegular: tipo === 'Regular'}
+        const data = await store.find({mood: modo, tense: tiempo, ...isRegular})
+        // let randomNumb = getRandomIntInclusive(0, 8);
+        // let randomPersona = persArr[randomNumb];
+        // setPersona(randomPersona);
+    
+        let randomData = data[getRandomIntInclusive(0, data.length - 1)];
+        setData(data)
+        setIndex(getRandomIntInclusive(0, data.length - 1))
+        console.log(randomData, 'results:', data.length);
 
     }, [])
 
-    if (!settings) return <Navigate  to="/settings" replace={true}/>
-    const {modo, tipo, tiempo} = settings
+    if (!settings)  return <Navigate  to="/settings" replace={true}/> 
 
+   
     return (
         <div className={S.container}>
             <h2 className={S.h2}>Введите правильную форму глагола ниже</h2>
@@ -72,19 +98,19 @@ export default function Conjugation() {
                 </table>
 
             </div>
-            <Answer keyboard={keyboard} />
-            <Keyboard onClick={(e) => setKeyboard(e.target.value)}/>
-            <Button>Проверить </Button>
+            <div className={S.answerContainer}>
+                <Answer answer={answer} onChange={(e) => setAnswer(e.target.value)}/>
+                <Button type='icon' icon={true} onClick={clear}> <IconDice /> </Button>
+            </div>
 
-            <Result />
+            <Keyboard onClick={(e) => setAnswer(`${answer}${e.target.value}`)}/>
+            <Button onClick={() => setIsCorrect(checkAnswer())}>Проверить </Button>
+            <Button onClick={() => setAnswer(verb[PersonasMap.get(persona)].toLocaleLowerCase())}>Показать ответ </Button>
+
+            <Result isCorrect={isCorrect}/>
+            {isCorrect && <Button onClick={clear}>Далее</Button>}
 
         </div>
     )
 }
 
-// Persona - лицо/род/число - оно генерируется рандомно.
-// Verb - Глагол в инфинитиве на испанском, который собственно нужно проспрягать. Глагол генерируется рандомно исходя из параметров, выбранных пользователем.
-// Modo - выбранное наклонение.
-// Tiempo - выбранное время (если времен было выбрано несколько пользователем, то выводится одно из них в случайном порядке).
-// Тип глагола - какой был выбран - рег/ нерег/оба - любой тип.
-// Перевод - перевод глагола с испанского на русский (инфинитив). - дополнительная опция для лучшего усвоения языка и запоминания пары глагол (исп) - значение (рус)".

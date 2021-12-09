@@ -5,6 +5,8 @@ import loginAnonymous from './network/loginAnonymous';
 import {Counter as Test} from './Test/Test';
 import RootRouter from './routes/RootRouter';
 import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
+import S from './App.module.css'
 
 export default function App () {
     const [verb, setVerb] = useState(undefined)
@@ -18,40 +20,43 @@ export default function App () {
     }, [])
 
 
-    useEffect(() => {
-        async function fetchData() {
-            const store = createVerbsStore(await loginAnonymous())
-            const data = await store.find({infinitive: 'tener'})
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         const store = createVerbsStore(await loginAnonymous())
+    //         const data = await store.find({infinitive: 'tener'})
         
 
-            // console.log(JSON.stringify(data, null, '\t'));
-            // console.log(JSON.stringify(data[0], null, '\t'))
-            setVerb(data[0].infinitive)
+    //         // console.log(JSON.stringify(data, null, '\t'));
+    //         // console.log(JSON.stringify(data[0], null, '\t'))
+    //         setVerb(data[0].infinitive)
 
 
-            const arrayInf = data.map((item)=> item.infinitive);
-            const arrayConjuged = data.map((item) => item.form_1s)
-            // console.log(arrayConjuged);
-            setVerb(arrayInf[0]);
-            setConjuged(arrayConjuged);
-        }; 
-        fetchData();
-    }, [])
+    //         const arrayInf = data.map((item)=> item.infinitive);
+    //         const arrayConjuged = data.map((item) => item.form_1s)
+    //         // console.log(arrayConjuged);
+    //         setVerb(arrayInf[0]);
+    //         setConjuged(arrayConjuged);
+    //     }; 
+    //     fetchData();
+    // }, [])
 
     
     return (
-    <div>
-        {/* {isDestroyCounter ? null : <Test />} */}
-        {/* <ConjugationOutput verbConjuged={conjuged} /> */}
+    <div className={S.page}>
         <Header />
-        {/* <h3>Espanol infinitive: {verb}</h3> */}
-        <main>
+        <main className={S.main}>
             <RootRouter />
         </main>
-        <footer>FOOTER</footer>
+        <Footer />
     </div>);
 }
 
+
+
+//   {/* {isDestroyCounter ? null : <Test />} */}
+//         {/* <ConjugationOutput verbConjuged={conjuged} /> */}
+
+// {* <h3>Espanol infinitive: {verb}</h3> */}
 
 //modo={verb.modo} tiempo={verb.tiempo} form1s={verb.form_1s}
 

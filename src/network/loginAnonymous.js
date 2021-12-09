@@ -3,8 +3,10 @@ import RealmApp from './realmApp';
 
 
 
-export default async function loginAnonymous() {
+async function loginAnonymous() {
     return await RealmApp
         .logIn(Realm.Credentials.anonymous())
         .catch((e) => console.log('Error:', e));
 }
+const Client = loginAnonymous()
+export default Client
