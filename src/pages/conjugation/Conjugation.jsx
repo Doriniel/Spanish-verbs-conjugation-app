@@ -111,8 +111,8 @@ export default function Conjugation() {
                 <Button onClick={() => setAnswer(verb[PersonasMap.get(persona)].toLocaleLowerCase())}>Показать ответ </Button>
             </div>
 
-            <Result isCorrect={isCorrect} />
-            {isCorrect && <Button onClick={clear}>Далее</Button>}
+            <Result type="correct" isCorrect={isCorrect} />
+            {isCorrect && <Button type="secondary" onClick={clear}>Далее</Button>}
 
         </div>
     )

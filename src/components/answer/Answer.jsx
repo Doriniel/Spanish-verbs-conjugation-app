@@ -6,7 +6,7 @@ export default function Answer(props) {
     return (
         <div className={S.answer}>
             <label> Спряжение </label>
-            <input type="text" value={inputAnswer} className={S.input} onChange={onChange}/>
+            <input placeholder="Напиши ответ здесь" type="text" value={inputAnswer} className={S.input} onChange={onChange}/>
         </div>
     )
 }

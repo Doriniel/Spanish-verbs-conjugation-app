@@ -19,6 +19,9 @@
     font-weight: 400;
     margin-left: 15px;
 }
+.input::placeholder {
+    font-size: 14px;
+}
 
 .test {
     margin-top:15px;
