@@ -46,3 +46,18 @@
     align-items: center;
     justify-content: space-evenly;
 }
+
+
+.linkBack {
+    width: 40px;
+    height: 40px;
+    fill: darkslateblue;
+    margin-bottom: 20px;
+}
+
+.buttonField {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}

@@ -8,6 +8,7 @@
 }
 
 .symbol{
+    cursor: pointer;
     margin: 0 10px;
     font-family: 'Roboto', Arial, sans-serif;
     font-weight: 600;
