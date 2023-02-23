@@ -1,5 +1,4 @@
-# Final-project-spanish
+# App to train verb conjugations in Spanish
 
-Приложение для тренировки спряжений глаголов в Испанском языке. 
-Помогает практиковать и запоминать глагольные формы во всех наклонениях, временах, лицах и числах.
-Сделано с помощью React, CSS-modules, база данных на MongoDB.
+- App that helps to train difficult verb conjugations in Spanish language
+- Made with React, CSS-modules, Mongo DB.
